@@ -1,0 +1,29 @@
+{
+  "title": "Enhancing Web Development with Jest Testing",
+  "content": [
+    {
+      "name": "Introduction to Jest",
+      "description": "Jest is a delightful JavaScript testing framework with a focus on simplicity. It works with projects using Babel, TypeScript, Node.js, React, Angular, Vue.js, and more. Jest makes testing painless, providing a great developer experience with features like zero configuration, instant feedback, and powerful mocking capabilities.",
+      "codeLang": "javascript",
+      "code": "const sum = require('./sum');\ntest('adds 1 + 2 to equal 3', () => {\n  expect(sum(1, 2)).toBe(3);\n});"
+    },
+    {
+      "name": "Writing Your First Test",
+      "description": "To start writing tests, create a test file with the same name as the module you want to test, but with a `.test.js` extension. Use Jest's global functions like `test`, `expect`, and `describe` to write your test cases.",
+      "codeLang": "javascript",
+      "code": "const multiply = require('./multiply');\ntest('multiplies 2 * 3 to equal 6', () => {\n  expect(multiply(2, 3)).toBe(6);\n});"
+    },
+    {
+      "name": "Mocking Functions",
+      "description": "Jest provides powerful ways to mock functions and modules. This allows you to isolate your tests and simulate different scenarios without relying on real implementations.",
+      "codeLang": "javascript",
+      "code": "const fetchData = jest.fn();\nfetchData.mockResolvedValue({ data: 'some data' });\n\nfetchData().then(response => {\n  expect(response.data).toBe('some data');\n});"
+    },
+    {
+      "name": "Testing Asynchronous Code",
+      "description": "Jest makes it easy to test asynchronous code using async/await or returning promises. You can use `done` callback, or `async/await` syntax to handle asynchronous operations in your tests.",
+      "codeLang": "javascript",
+      "code": "const fetchData = async () => {\n  return 'peanut butter';\n};\ntest('the data is peanut butter', async () => {\n  const data = await fetchData();\n  expect(data).toBe('peanut butter');\n});"
+    }
+  ]
+}

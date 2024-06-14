@@ -1,0 +1,44 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+  font-family: "Poppins", sans-serif;
+}
+@layer base {
+  :root {
+    --background: 0 0% 6%;
+  }
+}
+::-webkit-scrollbar {
+  width: 5px;
+  height: 5px;
+  background-color: black;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: gray;
+}
+
+/*  */
+.printSection {
+  width: 7in;
+  height: 7in;
+  page-break-after: always; /* Force a page break after each section */
+}
+
+.bgImg {
+  background-image: url("/bg.png");
+  background-size: 100%;
+}
+
+@page {
+  size: 7in 7in;
+  margin: 0 0 0 0;
+}
+
+@media print {
+  .hideOnPrint {
+    display: none;
+  }
+}
