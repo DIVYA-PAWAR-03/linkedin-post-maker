@@ -1,29 +1,52 @@
 {
-  "title": "Enhancing Web Development with Jest Testing",
+  "title": "Leveraging CSS Grid for Responsive Web Design",
+  "description": "✨ CSS Grid is a powerful layout system available in CSS that allows you to create complex and responsive web designs with ease. It provides a two-dimensional grid-based layout system, optimized for responsive design and making it simpler to arrange elements on a page.",
+  "hashtags": [
+    "css",
+    "frontend",
+    "webdev",
+    "responsive",
+    "grid",
+    "webdesign",
+    "development",
+    "developer",
+    "code",
+    "tech",
+    "tips",
+    "guide",
+    "cssgrid",
+    "learn",
+    "learncode",
+    "tutorial",
+    "web",
+    "development",
+    "frontenddeveloper",
+    "frontendengineer"
+  ],
   "content": [
     {
-      "name": "Introduction to Jest",
-      "description": "Jest is a delightful JavaScript testing framework with a focus on simplicity. It works with projects using Babel, TypeScript, Node.js, React, Angular, Vue.js, and more. Jest makes testing painless, providing a great developer experience with features like zero configuration, instant feedback, and powerful mocking capabilities.",
-      "codeLang": "javascript",
-      "code": "const sum = require('./sum');\ntest('adds 1 + 2 to equal 3', () => {\n  expect(sum(1, 2)).toBe(3);\n});"
+      "name": "Introduction to CSS Grid",
+      "description": "✨ CSS Grid is a powerful layout system available in CSS that allows you to create complex and responsive web designs with ease. It provides a two-dimensional grid-based layout system, optimized for responsive design and making it simpler to arrange elements on a page.",
+      "codeLang": "css",
+      "code": ".container {\n  display: grid;\n  grid-template-columns: repeat(3, 1fr);\n  grid-gap: 10px;\n}\n.item {\n  background: #f3f3f3;\n  padding: 20px;\n  border: 1px solid #ddd;\n}"
     },
     {
-      "name": "Writing Your First Test",
-      "description": "To start writing tests, create a test file with the same name as the module you want to test, but with a `.test.js` extension. Use Jest's global functions like `test`, `expect`, and `describe` to write your test cases.",
-      "codeLang": "javascript",
-      "code": "const multiply = require('./multiply');\ntest('multiplies 2 * 3 to equal 6', () => {\n  expect(multiply(2, 3)).toBe(6);\n});"
+      "name": "Creating a Basic Grid Layout",
+      "description": "📐 Start by defining a container element as a grid. Use `grid-template-columns` to set up your columns and `grid-gap` for spacing between items.",
+      "codeLang": "html",
+      "code": "<div class='container'>\n  <div class='item'>1</div>\n  <div class='item'>2</div>\n  <div class='item'>3</div>\n  <div class='item'>4</div>\n  <div class='item'>5</div>\n  <div class='item'>6</div>\n</div>"
     },
     {
-      "name": "Mocking Functions",
-      "description": "Jest provides powerful ways to mock functions and modules. This allows you to isolate your tests and simulate different scenarios without relying on real implementations.",
-      "codeLang": "javascript",
-      "code": "const fetchData = jest.fn();\nfetchData.mockResolvedValue({ data: 'some data' });\n\nfetchData().then(response => {\n  expect(response.data).toBe('some data');\n});"
+      "name": "Responsive Grid Layout",
+      "description": "📱 Make your grid responsive by using media queries. Adjust the number of columns and spacing based on the screen size.",
+      "codeLang": "css",
+      "code": "@media (max-width: 600px) {\n  .container {\n    grid-template-columns: 1fr;\n  }\n}"
     },
     {
-      "name": "Testing Asynchronous Code",
-      "description": "Jest makes it easy to test asynchronous code using async/await or returning promises. You can use `done` callback, or `async/await` syntax to handle asynchronous operations in your tests.",
-      "codeLang": "javascript",
-      "code": "const fetchData = async () => {\n  return 'peanut butter';\n};\ntest('the data is peanut butter', async () => {\n  const data = await fetchData();\n  expect(data).toBe('peanut butter');\n});"
+      "name": "Advanced Grid Features",
+      "description": "🚀 Explore advanced CSS Grid features like `grid-template-areas`, `grid-auto-flow`, and `grid-template-rows` to create more complex and dynamic layouts.",
+      "codeLang": "css",
+      "code": ".container {\n  display: grid;\n  grid-template-areas: 'header header header'\n                       'main main sidebar'\n                       'footer footer footer';\n  grid-gap: 10px;\n}\n.header { grid-area: header; }\n.main { grid-area: main; }\n.sidebar { grid-area: sidebar; }\n.footer { grid-area: footer; }"
     }
   ]
 }
