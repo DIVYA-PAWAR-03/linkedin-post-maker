@@ -10,7 +10,7 @@ const OutputPost = () => {
   const { contentObject, codeTextSize } = useStore();
 
   return (
-    <main className="flex flex-col print:gap-0 print:my-0 my-10 gap-5 items-center m-auto">
+    <main className="col-span-2 print:py-0 py-10 items-center md:m-auto md:w-min w-full overflow-y-scroll">
       <PostFirstPage title={contentObject?.title || "Title"} />
       {contentObject &&
         contentObject.content.map((content, index) => (

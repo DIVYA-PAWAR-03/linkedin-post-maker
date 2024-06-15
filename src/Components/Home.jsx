@@ -2,7 +2,7 @@ import Sidebar from "./Sidebar";
 import OutputPost from "./OutputPost";
 const Test = () => {
   return (
-    <div className="print:block flex lg:flex-row flex-col bg-black overflow-hidden">
+    <div className="print:block lg:flex bg-black">
       <Sidebar />
       <OutputPost />
     </div>

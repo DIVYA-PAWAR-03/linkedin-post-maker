@@ -24,6 +24,7 @@
 .printSection {
   width: 7in;
   height: 7in;
+  margin-top: 3rem;
   page-break-after: always; /* Force a page break after each section */
 }
 
@@ -38,7 +39,14 @@
 }
 
 @media print {
+  ::-webkit-scrollbar {
+    width: 0;
+    height: 0;
+  }
   .hideOnPrint {
     display: none;
+  }
+  .printSection {
+    margin-top: 0rem;
   }
 }

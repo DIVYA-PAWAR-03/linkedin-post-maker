@@ -47,7 +47,7 @@ const Sidebar = () => {
   };
 
   return (
-    <aside className="hideOnPrint border-r max-w-[500px] h-screen lg:sticky top-0 bg-black text-white border-gray-800 p-5">
+    <aside className="hideOnPrint lg:border-r lg:h-screen lg:max-w-[30rem] min-w-72 overflow-y-scroll top-0 lg:sticky bg-black text-white border-gray-800 p-5">
       <h1 className="text-2xl mb-3 font-bold">Create post</h1>
       <textarea
         className="w-full p-2 resize-none text-white bg-black border border-gray-700"
@@ -55,7 +55,7 @@ const Sidebar = () => {
         value={jsonInput}
         onChange={handleInputChange}
       />
-      <div className="flex justify-between items-center mt-3">
+      <div className="flex justify-between items-center mt-3 gap-1">
         <button className="bg-blue-700 p-2" onClick={handleCreatePost}>
           Create Post
         </button>
