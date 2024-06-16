@@ -22,26 +22,30 @@ const OutputPost = () => {
               {index + 1}. {content.name}
             </h1>
             <p className="text-lg text-white/50 my-7">{content.description}</p>
-            <SyntaxHighlighter
-              language={content.codeLang}
-              style={anOldHope}
-              showLineNumbers
-              customStyle={{
-                backgroundColor: "#101010",
-                borderRadius: "10px",
-                boxShadow: "0 0 30px -7px black",
-                paddingTop: "20px",
-                fontSize: codeTextSize + "px",
-                paddingBottom: "20px",
-              }}
-              wrapLines={true}
-              lineProps={{
-                style: { wordBreak: "break-all", whiteSpace: "pre-wrap" },
-              }}
-              className="p-4"
-            >
-              {content.code}
-            </SyntaxHighlighter>
+            {!content.code ||
+              (!content.code == "" && (
+                <SyntaxHighlighter
+                  language={content.codeLang}
+                  style={anOldHope}
+                  showLineNumbers
+                  customStyle={{
+                    backgroundColor: "#101010",
+                    borderRadius: "10px",
+                    boxShadow: "0 0 30px -7px black",
+                    paddingTop: "20px",
+                    fontSize: codeTextSize + "px",
+                    paddingBottom: "20px",
+                  }}
+                  wrapLines={true}
+                  lineProps={{
+                    style: { wordBreak: "break-all", whiteSpace: "pre-wrap" },
+                  }}
+                  className="p-4"
+                >
+                  {content.code}
+                </SyntaxHighlighter>
+              ))}
+
             <div className="absolute bottom-2 right-5 flex items-center gap-3 text-white/70">
               <img src={dpImg} className="h-8 w-8 rounded-full" alt="" />
               <div className="text-right mb-[1px]">
