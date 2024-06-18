@@ -1,16 +1,25 @@
 import React, { useState } from "react";
 import dpImg from "/dp.png";
 import useStore from "../lib/useStore";
-import SyntaxHighlighter from "react-syntax-highlighter";
-import { anOldHope } from "react-syntax-highlighter/dist/esm/styles/hljs";
+
 import PostFirstPage from "./PostFirstPage";
 import PostLastPage from "./PostLastPage";
+import ModificableText from "./ModificableText";
+import ModificableCodeBlock from "./ModificableCodeBlock";
 
 const OutputPost = () => {
-  const { contentObject, codeTextSize } = useStore();
+  const { contentObject } = useStore();
 
   return (
     <main className="col-span-2 print:py-0 py-10 items-center md:m-auto md:w-min w-full overflow-y-scroll">
+      <button
+        className="hideOnPrint bg-blue-700 p-2 fixed top-5 right-5 z-10 text-white"
+        onClick={() => {
+          window.print();
+        }}
+      >
+        Download as PDF
+      </button>
       <PostFirstPage title={contentObject?.title || "Title"} />
       {contentObject &&
         contentObject.content.map((content, index) => (
@@ -21,29 +30,20 @@ const OutputPost = () => {
             <h1 className="text-3xl font-bold">
               {index + 1}. {content.name}
             </h1>
-            <p className="text-lg text-white/50 my-7">{content.description}</p>
+            <ModificableText
+              defaultFont={18}
+              className="text-lg text-white/50 my-7"
+            >
+              {content.description}
+            </ModificableText>
             {!content.code ||
               (!content.code == "" && (
-                <SyntaxHighlighter
-                  language={content.codeLang}
-                  style={anOldHope}
-                  showLineNumbers
-                  customStyle={{
-                    backgroundColor: "#101010",
-                    borderRadius: "10px",
-                    boxShadow: "0 0 30px -7px black",
-                    paddingTop: "20px",
-                    fontSize: codeTextSize + "px",
-                    paddingBottom: "20px",
-                  }}
-                  wrapLines={true}
-                  lineProps={{
-                    style: { wordBreak: "break-all", whiteSpace: "pre-wrap" },
-                  }}
-                  className="p-4"
+                <ModificableCodeBlock
+                  defaultFont={16}
+                  codeLang={content.codeLang}
                 >
                   {content.code}
-                </SyntaxHighlighter>
+                </ModificableCodeBlock>
               ))}
 
             <div className="absolute bottom-2 right-5 flex items-center gap-3 text-white/70">

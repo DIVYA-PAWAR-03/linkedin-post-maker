@@ -2,8 +2,7 @@ import React, { useState } from "react";
 import useStore from "../lib/useStore";
 
 const Sidebar = () => {
-  const { contentObject, setContentObject, codeTextSize, setCodeTextSize } =
-    useStore();
+  const { contentObject, setContentObject } = useStore();
 
   const [jsonInput, setJsonInput] = useState("");
 
@@ -55,48 +54,29 @@ const Sidebar = () => {
         value={jsonInput}
         onChange={handleInputChange}
       />
-      <div className="flex justify-between items-center mt-3 gap-1">
+      <div className="flex justify-end items-center mt-3 gap-1">
         <button className="bg-blue-700 p-2" onClick={handleCreatePost}>
           Create Post
         </button>
-        <button
-          className="bg-blue-700 p-2"
-          onClick={() => {
-            window.print();
-          }}
-        >
-          Download as PDF
-        </button>
       </div>
-      <input
-        type="number"
-        placeholder="code text size in px (12px)"
-        onChange={(e) => {
-          setCodeTextSize(e.target.value);
-        }}
-        value={codeTextSize}
-        className="w-full p-2 text-white bg-black border border-gray-700 mt-5"
-      />
       {contentObject && (
-        <div
+        <pre
           id="editableDiv"
-          className="mt-3 border border-gray-800 p-2"
-          contentEditable
+          className="text-wrap mt-3 border border-gray-800 p-2"
         >
-          <p>{contentObject.description}</p>
-          <br />
-          follow @Chetan-Khulage for more content like this!!
+          {contentObject.description}
           <br />
           <br />
-          <p>
-            {contentObject.hashtags.map(
-              (hashtag, index) =>
-                `#${hashtag} ${
-                  index !== contentObject.hashtags.length - 1 ? " " : ""
-                }`
-            )}
-          </p>
-        </div>
+          follow @Chetan Khulage for more content like this!!
+          <br />
+          <br />
+          {contentObject.hashtags.map(
+            (hashtag, index) =>
+              `#${hashtag} ${
+                index !== contentObject.hashtags.length - 1 ? " " : ""
+              }`
+          )}
+        </pre>
       )}
       <button
         className="bg-blue-700 p-2 mt-3 float-right"
