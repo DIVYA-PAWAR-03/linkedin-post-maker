@@ -1,5 +1,11 @@
 import React, { useState } from "react";
 import useStore from "../lib/useStore";
+import AI from "./AI";
+import { Button } from "./ui/button";
+import { Textarea } from "@/Components/ui/textarea";
+import { ModeToggle } from "@/Components/ui/mode-toggle";
+import { Home } from "lucide-react";
+import { Link } from "react-router-dom";
 
 const Sidebar = () => {
   const { contentObject, setContentObject } = useStore();
@@ -46,44 +52,62 @@ const Sidebar = () => {
   };
 
   return (
-    <aside className="hideOnPrint lg:border-r lg:h-screen lg:max-w-[30rem] min-w-72 overflow-y-scroll top-0 lg:sticky bg-black text-white border-gray-800 p-5">
-      <h1 className="text-2xl mb-3 font-bold">Create post</h1>
-      <textarea
-        className="w-full p-2 resize-none text-white bg-black border border-gray-700"
-        rows="10"
-        value={jsonInput}
-        onChange={handleInputChange}
-      />
-      <div className="flex justify-end items-center mt-3 gap-1">
-        <button className="bg-blue-700 p-2" onClick={handleCreatePost}>
-          Create Post
-        </button>
+    <aside className=" flex flex-col justify-between h-screen p-4">
+      <div>
+        <div className="mb-3 flex gap-2 items-center">
+          <Link to={"/"}>
+            <Button variant="secondary" size="icon">
+              <Home className="h-5 w-5" />
+            </Button>
+          </Link>
+          <h1 className="text-xl font-bold">Post Maker</h1>
+        </div>
+        <Textarea
+          className="p-2"
+          value={jsonInput}
+          onChange={handleInputChange}
+          placeholder={`Input Json Data`}
+          rows="6"
+        />
+        <div className="mt-3 gap-1">
+          <Button className="" onClick={handleCreatePost}>
+            Create Post
+          </Button>
+        </div>
+        {contentObject ? (
+          <pre
+            id="editableDiv"
+            className="text-wrap mt-3 border-border border rounded-lg p-2"
+          >
+            {contentObject.description}
+            <br />
+            <br />
+            follow @Chetan Khulage for more content like this!!
+            <br />
+            <br />
+            {contentObject.hashtags.map(
+              (hashtag, index) =>
+                `#${hashtag} ${
+                  index !== contentObject.hashtags.length - 1 ? " " : ""
+                }`
+            )}
+          </pre>
+        ) : (
+          <pre
+            id="editableDiv"
+            className="text-wrap mt-3 border-border border rounded-lg p-2"
+          >
+            description for this post will be here...!
+          </pre>
+        )}
+        <Button className="mt-3" onClick={copyToClipboard}>
+          {copySuccess ? "Copied!" : "Copy description"}
+        </Button>
+        {/* <AI /> */}
       </div>
-      {contentObject && (
-        <pre
-          id="editableDiv"
-          className="text-wrap mt-3 border border-gray-800 p-2"
-        >
-          {contentObject.description}
-          <br />
-          <br />
-          follow @Chetan Khulage for more content like this!!
-          <br />
-          <br />
-          {contentObject.hashtags.map(
-            (hashtag, index) =>
-              `#${hashtag} ${
-                index !== contentObject.hashtags.length - 1 ? " " : ""
-              }`
-          )}
-        </pre>
-      )}
-      <button
-        className="bg-blue-700 p-2 mt-3 float-right"
-        onClick={copyToClipboard}
-      >
-        {copySuccess ? "Copied!" : "Copy text"}
-      </button>
+      <div className="border-t border-border pt-4">
+        <ModeToggle />
+      </div>
     </aside>
   );
 };

@@ -6,26 +6,46 @@ import PostFirstPage from "./PostFirstPage";
 import PostLastPage from "./PostLastPage";
 import ModificableText from "./ModificableText";
 import ModificableCodeBlock from "./ModificableCodeBlock";
+import { Button } from "./ui/button";
+import { FileDownIcon } from "lucide-react";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from ".//ui/select";
 
 const OutputPost = () => {
   const { contentObject } = useStore();
 
   return (
-    <main className="col-span-2 print:py-0 py-10 items-center md:m-auto md:w-min w-full overflow-y-scroll">
-      <button
-        className="hideOnPrint bg-blue-700 p-2 fixed top-5 right-5 z-10 text-white"
-        onClick={() => {
-          window.print();
-        }}
-      >
-        Download as PDF
-      </button>
+    <main className="print:py-0 py-10">
+      <div className="hideOnPrint flex gap-2 fixed top-5 right-5 z-10">
+        <Select>
+          <SelectTrigger className="w-[180px]">
+            <SelectValue placeholder="Select Theme" />
+          </SelectTrigger>
+          <SelectContent>
+            <SelectItem value="light">Dark Stone</SelectItem>
+            <SelectItem value="dark">Colourful Bubbles</SelectItem>
+            <SelectItem value="system">Minimal White</SelectItem>
+          </SelectContent>
+        </Select>
+        <Button
+          onClick={() => {
+            window.print();
+          }}
+        >
+          <FileDownIcon className="w-5 h-5 mr-1" /> Download as PDF
+        </Button>
+      </div>
       <PostFirstPage title={contentObject?.title || "Title"} />
       {contentObject &&
         contentObject.content.map((content, index) => (
           <section
             key={index}
-            className="bgImg relative text-white bg-background shadow-sm p-10 px-12 overflow-hidden printSection"
+            className=" bgImg relative text-white bg-background shadow-sm p-10 px-12 overflow-hidden printSection"
           >
             <h1 className="text-3xl font-bold">
               {index + 1}. {content.name}
