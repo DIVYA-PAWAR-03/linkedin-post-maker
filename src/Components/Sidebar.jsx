@@ -2,8 +2,8 @@ import React, { useState } from "react";
 import useStore from "../lib/useStore";
 import AI from "./AI";
 import { Button } from "./ui/button";
-import { Textarea } from "@/Components/ui/textarea";
-import { ModeToggle } from "@/Components/ui/mode-toggle";
+import { Textarea } from "../Components/ui/textarea";
+import { ModeToggle } from "../Components/ui/mode-toggle";
 import { Home } from "lucide-react";
 import { Link } from "react-router-dom";
 

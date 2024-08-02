@@ -6,7 +6,7 @@ import {
   ResizableHandle,
   ResizablePanel,
   ResizablePanelGroup,
-} from "@/Components/ui/resizable";
+} from "../Components/ui/resizable";
 
 const Editor = () => {
   return (
