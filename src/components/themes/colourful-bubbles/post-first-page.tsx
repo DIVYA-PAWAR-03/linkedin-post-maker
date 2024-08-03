@@ -27,14 +27,16 @@ const PostFirstPage = ({ title }: { title: string }) => {
       <div className="font-bold text-4xl leading-normal w-[80%]">{title}</div>
       <div className="flex flex-col justify-center gap-2">
         <h6 className="mb-1 text-black/70">Follow</h6>
-        <Image
-          src={profilePic as string}
-          className="h-16 w-16 rounded-full"
-          height={16}
-          width={16}
-          alt=""
-        />
-        <h4 className=" font-bold text-xl">{name}</h4>
+        {profilePic && (
+          <Image
+            src={profilePic as string}
+            className="h-16 w-16 rounded-full"
+            height={16}
+            width={16}
+            alt=""
+          />
+        )}
+        <h4 className=" font-bold text-xl">{name ? name : "Name"}</h4>
         <h6 className="-mt-1 text-black/70">for more content like this</h6>
       </div>
       <div className="absolute bottom-2 right-3 font-bold flex gap-4 text-black/80">

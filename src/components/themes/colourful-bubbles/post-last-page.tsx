@@ -26,14 +26,18 @@ const PostLastPage = () => {
     >
       <div className="text-center flex flex-col justify-center mt-20 items-center gap-2">
         <h6 className="mb-1 text-2xl text-black/80">Follow</h6>
-        <Image
-          src={profilePic as string}
-          className="h-20 w-20 rounded-full"
-          height={20}
-          width={20}
-          alt=""
-        />
-        <h4 className="text-center font-bold text-3xl">{name}</h4>
+        {profilePic && (
+          <Image
+            src={profilePic as string}
+            className="h-20 w-20 rounded-full"
+            height={20}
+            width={20}
+            alt=""
+          />
+        )}
+        <h4 className="text-center font-bold text-3xl">
+          {name ? name : "Name"}
+        </h4>
         <h6 className="-mt-1 text-black/80 text-2xl">
           for more content like this
         </h6>

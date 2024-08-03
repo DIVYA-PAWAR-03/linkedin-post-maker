@@ -46,41 +46,42 @@ const UserDescription = ({ contentObject }: Props) => {
     }
   };
 
-  if (!isMounted) {
-    return null;
-  }
-
   return (
     <div>
-      {contentObject ? (
-        <pre
-          id="editableDiv"
-          className="text-wrap mt-3 max-h-52 overflow-y-auto border-border border rounded-lg p-2"
-        >
-          {contentObject.description}
-          <br />
-          <br />
-          follow @{username} for more content like this!!
-          <br />
-          <br />
-          {contentObject.hashtags.map(
-            (hashtag: string, index: number) =>
-              `#${hashtag} ${
-                index !== contentObject.hashtags.length - 1 ? " " : ""
-              }`
+      {isMounted && (
+        <div>
+          {contentObject ? (
+            <pre
+              id="editableDiv"
+              className="text-wrap mt-3 max-h-52 overflow-y-auto border-border border rounded-lg p-2"
+            >
+              {contentObject.description}
+              <br />
+              <br />
+              follow @{username ? username : "your name"} for more content like
+              this!!
+              <br />
+              <br />
+              {contentObject.hashtags.map(
+                (hashtag: string, index: number) =>
+                  `#${hashtag} ${
+                    index !== contentObject.hashtags.length - 1 ? " " : ""
+                  }`
+              )}
+            </pre>
+          ) : (
+            <pre
+              id="editableDiv"
+              className="text-wrap mt-3 border-border border rounded-lg p-2"
+            >
+              description for this post will be here...!
+            </pre>
           )}
-        </pre>
-      ) : (
-        <pre
-          id="editableDiv"
-          className="text-wrap mt-3 border-border border rounded-lg p-2"
-        >
-          description for this post will be here...!
-        </pre>
+          <Button className="mt-3" onClick={copyToClipboard}>
+            {copySuccess ? "Copied!" : "Copy description"}
+          </Button>
+        </div>
       )}
-      <Button className="mt-3" onClick={copyToClipboard}>
-        {copySuccess ? "Copied!" : "Copy description"}
-      </Button>
     </div>
   );
 };

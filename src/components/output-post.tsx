@@ -19,8 +19,6 @@ type Props = {};
 const OutputPost = (props: Props) => {
   const [selectedPost, setSelectedPost] = useState<string>("black-diamond");
 
-  const allPosts = ["black-diamond", "colourful-bubbles"];
-
   return (
     <main className="print:py-0 py-10">
       <div className="hideOnPrint flex gap-2 fixed top-5 right-5 z-10">
