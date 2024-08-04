@@ -52,7 +52,7 @@ const ColourfulBubblesPost = (props: Props) => {
             <div className="absolute bottom-2 right-3 flex items-center gap-3 text-black/70 bg-white/30 py-1 px-2 rounded-lg">
               <Image
                 src={profilePic as string}
-                className="h-8 w-8 rounded-full"
+                className="h-8 w-8 rounded-full object-cover"
                 height={8}
                 width={8}
                 alt=""

@@ -30,7 +30,7 @@ const PostFirstPage = ({ title }: { title: string }) => {
         {profilePic && (
           <Image
             src={profilePic as string}
-            className="h-16 w-16 rounded-full"
+            className="h-16 w-16 rounded-full object-cover"
             height={16}
             width={16}
             alt=""

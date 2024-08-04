@@ -7,6 +7,7 @@ import { Textarea } from "./ui/textarea";
 import usePost from "@/lib/usePost";
 import { useUser } from "@/lib/useUser";
 import UserDescription from "./user-description";
+import { ModeToggle } from "./ui/mode-toggle";
 
 type Props = {};
 
@@ -31,13 +32,16 @@ const Sidebar = (props: Props) => {
 
   return (
     <aside className="flex flex-col p-4">
-      <div className="mb-3 flex gap-2 items-center">
-        <Link href={"/"}>
-          <Button variant="secondary" size="icon">
-            <Home className="h-5 w-5" />
-          </Button>
-        </Link>
-        <h1 className="text-xl font-bold">Post Maker</h1>
+      <div className="mb-3 flex gap-2 items-center justify-between">
+        <div className="flex gap-2 items-center">
+          <Link href={"/"}>
+            <Button variant="secondary" size="icon">
+              <Home className="h-5 w-5" />
+            </Button>
+          </Link>
+          <h1 className="text-xl font-bold">Post Maker</h1>
+        </div>
+        <ModeToggle />
       </div>
       <Textarea
         className="p-2 min-h-32"

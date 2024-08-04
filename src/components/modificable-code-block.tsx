@@ -10,6 +10,9 @@ const ModificableCodeBlock = ({
   boxShadow,
   codeLang,
   defaultFont,
+  showLineNumbers = true,
+  customStyle,
+  wrapLines = true,
 }: {
   children: string;
   style: any;
@@ -17,6 +20,9 @@ const ModificableCodeBlock = ({
   boxShadow: string;
   codeLang: string;
   defaultFont: string | number;
+  showLineNumbers?: boolean;
+  customStyle?: Object;
+  wrapLines?: boolean;
 }) => {
   const [CustomFontSize, setCustomFontSize] = useState("inherit");
   const [active, setActive] = useState(false);
@@ -49,7 +55,7 @@ const ModificableCodeBlock = ({
         <SyntaxHighlighter
           language={codeLang}
           style={style}
-          showLineNumbers
+          showLineNumbers={showLineNumbers}
           customStyle={{
             backgroundColor: backgroundColor,
             borderRadius: "10px",
@@ -57,8 +63,9 @@ const ModificableCodeBlock = ({
             paddingTop: "20px",
             fontSize: CustomFontSize + "px",
             paddingBottom: "20px",
+            ...customStyle,
           }}
-          wrapLines={true}
+          wrapLines={wrapLines}
           lineProps={{
             style: { wordBreak: "break-all", whiteSpace: "pre-wrap" },
           }}
