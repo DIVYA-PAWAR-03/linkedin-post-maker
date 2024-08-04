@@ -1,29 +1,32 @@
 "use client";
 
-import React, { useState } from "react";
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from "./ui/select";
 import { Button } from "./ui/button";
 import { FileDownIcon } from "lucide-react";
 import BlackDiamondPost from "./themes/black-diamond/black-diamond-post";
 import ColourfulBubblesPost from "./themes/colourful-bubbles/colourful-bubbles-post";
-import UserSettings from "./user-settings";
+import { useSelectedTheme } from "@/lib/useSelectedTheme";
+import AllPostThemes from "@/lib/all-post-themes";
+import { useEffect, useState } from "react";
 
 type Props = {};
 
 const OutputPost = (props: Props) => {
-  const [selectedPost, setSelectedPost] = useState<string>("black-diamond");
+  const { selectedTheme, setSelectedTheme } = useSelectedTheme();
+
+  const [isMounted, setIsMounted] = useState(false);
+
+  useEffect(() => {
+    setIsMounted(true);
+  }, []);
+
+  if (!isMounted) {
+    return null;
+  }
 
   return (
     <main className="print:py-0 py-10">
-      <div className="hideOnPrint flex gap-2 fixed top-5 right-5 z-10">
-        <UserSettings />
-        <Select
+      <div className="hideOnPrint flex gap-2 fixed top-5 left-[50%] translate-x-[-50%] z-10">
+        {/* <Select
           defaultValue="black-diamond"
           onValueChange={(e) => {
             setSelectedPost(e);
@@ -37,7 +40,7 @@ const OutputPost = (props: Props) => {
             <SelectItem value="colourful-bubbles">Colourful Bubbles</SelectItem>
             <SelectItem value="minimal-white">Minimal White</SelectItem>
           </SelectContent>
-        </Select>
+        </Select> */}
         <Button
           onClick={() => {
             window.print();
@@ -46,8 +49,9 @@ const OutputPost = (props: Props) => {
           <FileDownIcon className="w-5 h-5 mr-1" /> Download as PDF
         </Button>
       </div>
-      {selectedPost === "black-diamond" && <BlackDiamondPost />}
-      {selectedPost === "colourful-bubbles" && <ColourfulBubblesPost />}
+      {AllPostThemes.map((theme, _) => (
+        <div key={_}>{selectedTheme === theme.name && <theme.component />}</div>
+      ))}
     </main>
   );
 };

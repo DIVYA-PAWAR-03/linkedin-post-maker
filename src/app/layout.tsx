@@ -4,11 +4,6 @@ import { ThemeProvider } from "@/lib/theme-provider";
 import { cn } from "@/lib/utils";
 import "./globals.css";
 
-const fontSans = FontSans({
-  subsets: ["latin"],
-  variable: "--font-sans",
-});
-
 const fontPoppins = Poppins({
   subsets: ["latin"],
   weight: ["100", "400", "600"],
@@ -29,7 +24,7 @@ export default function RootLayout({
     <html lang="en" suppressHydrationWarning>
       <body
         className={cn(
-          "min-h-screen bg-background font-sans antialiased",
+          "min-h-screen bg-background antialiased",
           fontPoppins.className
         )}
       >

@@ -90,38 +90,40 @@ export default function Home() {
         }}
       >
         <h1 className="text-2xl font-bold mb-3">Example Object:</h1>
-        <SyntaxHighlighter
-          language={"json"}
-          style={anOldHope}
-          showLineNumbers
-          customStyle={{
-            backgroundColor: "#101010",
-            borderRadius: "10px",
-            paddingTop: "20px",
-            fontSize: 12 + "px",
-            paddingBottom: "20px",
-          }}
-          wrapLines={false}
-          lineProps={{
-            style: { wordBreak: "break-all", whiteSpace: "pre-wrap" },
-          }}
-          className="p-4"
-        >
-          {JSON.stringify(exampleObject, null, 2)}
-        </SyntaxHighlighter>
-        {!expanded && (
-          <div className="absolute p-2 h-44 flex justify-center items-end bottom-0 left-0 w-full bg-gradient-to-b from-transparent to-background ">
-            <Button
-              className="h-7 pr-2 pl-3"
-              variant={"secondary"}
-              onClick={() => {
-                setExpanded(true);
-              }}
-            >
-              Expand <ChevronDown className="ml-1 h-4 w-4" />
-            </Button>
-          </div>
-        )}
+        <div>
+          <SyntaxHighlighter
+            language={"json"}
+            style={anOldHope}
+            showLineNumbers
+            customStyle={{
+              backgroundColor: "#101010",
+              borderRadius: "10px",
+              paddingTop: "20px",
+              fontSize: 12 + "px",
+              paddingBottom: "20px",
+            }}
+            wrapLines={false}
+            lineProps={{
+              style: { wordBreak: "break-all", whiteSpace: "pre-wrap" },
+            }}
+            className="p-4"
+          >
+            {JSON.stringify(exampleObject, null, 2)}
+          </SyntaxHighlighter>
+          {!expanded && (
+            <div className="absolute p-2 h-44 flex justify-center items-end bottom-0 left-0 w-full bg-gradient-to-b from-transparent to-background ">
+              <Button
+                className="h-7 pr-2 pl-3 text-xs"
+                variant={"secondary"}
+                onClick={() => {
+                  setExpanded(true);
+                }}
+              >
+                Expand <ChevronDown className="ml-1 h-4 w-4" />
+              </Button>
+            </div>
+          )}
+        </div>
       </div>
     </main>
   );

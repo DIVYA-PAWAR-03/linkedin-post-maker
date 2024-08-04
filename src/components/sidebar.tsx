@@ -8,6 +8,7 @@ import usePost from "@/lib/usePost";
 import { useUser } from "@/lib/useUser";
 import UserDescription from "./user-description";
 import { ModeToggle } from "./ui/mode-toggle";
+import UserSettings from "./user-settings";
 
 type Props = {};
 
@@ -41,7 +42,11 @@ const Sidebar = (props: Props) => {
           </Link>
           <h1 className="text-xl font-bold">Post Maker</h1>
         </div>
-        <ModeToggle />
+        <div className="flex gap-2">
+          <UserSettings />
+
+          <ModeToggle />
+        </div>
       </div>
       <Textarea
         className="p-2 min-h-32"
