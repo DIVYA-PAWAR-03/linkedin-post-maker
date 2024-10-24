@@ -3,13 +3,19 @@
 import Header from "@/components/header";
 import { Button } from "@/components/ui/button";
 import { ChevronDown } from "lucide-react";
+import { useTheme } from "next-themes";
 import Link from "next/link";
 import { useState } from "react";
 import SyntaxHighlighter from "react-syntax-highlighter";
-import { anOldHope } from "react-syntax-highlighter/dist/esm/styles/hljs";
+import {
+  anOldHope,
+  atomOneLight,
+} from "react-syntax-highlighter/dist/esm/styles/hljs";
 
 export default function Home() {
   const [expanded, setExpanded] = useState(false);
+
+  const { resolvedTheme } = useTheme();
 
   const exampleObject = {
     title: "Building Interactive Forms with Formik in React",
@@ -74,6 +80,7 @@ export default function Home() {
   return (
     <main className="">
       <Header />
+
       <div className="flex justify-center items-center mt-10 gap-5">
         <Link href={"/explore"}>
           <Button variant="outline">Explore Posts</Button>
@@ -82,6 +89,74 @@ export default function Home() {
           <Button>Create New Post</Button>
         </Link>
       </div>
+      <div className="max-w-7xl m-auto my-10 space-y-10">
+        <div>
+          <h1 className="text-xl font-bold mb-3">Getting Started:</h1>
+          <ol className="list-disc list-inside">
+            <li>Enter your name and LinkedIn username.</li>
+            <li>
+              Upload your profile picture (small size recommended for faster
+              loading).
+            </li>
+            <li>
+              Click "Save" to complete your profile setup. You only need to do
+              this once.
+            </li>
+          </ol>
+        </div>
+
+        <div className="grid grid-cols-2 gap-5">
+          <div className="bg-accent p-4 rounded-md">
+            <h1 className="text-xl font-bold mb-3">Manual Post Generation:</h1>
+            <ol className="list-disc list-outside ml-5 mb-3">
+              <li>Copy the provided JSON format text below.</li>
+              <li>
+                Use an AI tool to generate a LinkedIn post from this JSON.
+              </li>
+              <li>
+                Once the post is generated, go to "Create New Post" and paste
+                the JSON text into the text field.
+              </li>
+              <li>Click "Create Post" to publish your content.</li>
+            </ol>
+          </div>
+
+          <div className="bg-accent p-4 rounded-md">
+            <h1 className="text-xl font-bold mb-3">
+              Automatic AI Post Generation:
+            </h1>
+            <ol className="list-disc list-outside ml-5 mb-3">
+              <li>Click "Create Post".</li>
+              <li>Enter your topic or idea in the input field.</li>
+              <li>Click "Generate" and let the AI create the post for you.</li>
+              <li>
+                Review the generated post and click "Create Post" to publish it.
+              </li>
+            </ol>
+          </div>
+        </div>
+
+        <div>
+          <h1 className="text-xl font-bold mb-3">After Post Creation:</h1>
+          <ol className="list-disc list-inside">
+            <li>Select a design theme from the options on the right side.</li>
+            <li>
+              If the text is too long or doesn't fit properly, you can resize
+              the font by hovering over the text.
+            </li>
+            <li>
+              Once you're happy with the design, click "Download Post" to save
+              the post.
+            </li>
+            <li>Upload the document post to LinkedIn.</li>
+            <li>
+              Click the "Copy Description" button to copy the text description,
+              then paste it into your LinkedIn post and publish.
+            </li>
+          </ol>
+        </div>
+      </div>
+
       <div
         className="relative mt-10 w-[50rem] m-auto rounded-[10px] overflow-hidden"
         style={{
@@ -93,10 +168,13 @@ export default function Home() {
         <div>
           <SyntaxHighlighter
             language={"json"}
-            style={anOldHope}
+            style={resolvedTheme === "dark" ? anOldHope : atomOneLight}
             showLineNumbers
             customStyle={{
-              backgroundColor: "#101010",
+              backgroundColor:
+                resolvedTheme === "dark"
+                  ? "hsl(240 3.7% 15.9%)"
+                  : "hsl(240 4.8% 95.9%)",
               borderRadius: "10px",
               paddingTop: "20px",
               fontSize: 12 + "px",
@@ -124,6 +202,15 @@ export default function Home() {
             </div>
           )}
         </div>
+      </div>
+      <div className="p-10  text-center">
+        Made with 💖 by{" "}
+        <a
+          href="https://github.com/Chetan-KK"
+          className="hover:underline underline-offset-4 font-bold"
+        >
+          Chetan-KK
+        </a>
       </div>
     </main>
   );
