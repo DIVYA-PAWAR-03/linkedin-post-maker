@@ -50,13 +50,15 @@ const ColourfulBubblesPost = (props: Props) => {
               </ModificableCodeBlock>
             )}
             <div className="absolute bottom-2 right-3 flex items-center gap-3 text-black/70 bg-white/30 py-1 px-2 rounded-lg">
-              <Image
-                src={profilePic as string}
-                className="h-8 w-8 rounded-full object-cover"
-                height={8}
-                width={8}
-                alt=""
-              />
+              {profilePic && (
+                <Image
+                  src={profilePic as string}
+                  className="h-8 w-8 rounded-full object-cover"
+                  height={8}
+                  width={8}
+                  alt=""
+                />
+              )}
               <div className="text-right mb-[1px]">
                 <h3 className="text-sm text-black font-bold">@{username}</h3>
                 <p className="text-[10px] ">for more content like this</p>

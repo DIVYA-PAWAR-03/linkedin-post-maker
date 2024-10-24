@@ -52,13 +52,15 @@ const BlackDiamondPost = (props: Props) => {
               </ModificableCodeBlock>
             )}
             <div className="absolute bottom-2 right-5 flex items-center gap-3 text-white/70">
-              <Image
-                src={profilePic as string}
-                className="h-8 w-8 rounded-full object-cover"
-                height={8}
-                width={8}
-                alt=""
-              />
+              {profilePic && (
+                <Image
+                  src={profilePic as string}
+                  className="h-8 w-8 rounded-full object-cover"
+                  height={8}
+                  width={8}
+                  alt=""
+                />
+              )}
               <div className="text-right mb-[1px]">
                 <h3 className="text-sm text-white">@{username}</h3>
                 <p className="text-[9px] mt-0.5">for more content like this</p>

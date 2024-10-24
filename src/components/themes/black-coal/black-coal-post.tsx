@@ -50,13 +50,15 @@ const BlackCoalPost = (props: Props) => {
               </ModificableCodeBlock>
             )}
             <div className="absolute bottom-2 left-3 flex items-center gap-3 text-white/50">
-              <Image
-                src={profilePic as string}
-                className="h-8 w-8 rounded-full object-cover"
-                height={8}
-                width={8}
-                alt=""
-              />
+              {profilePic && (
+                <Image
+                  src={profilePic as string}
+                  className="h-8 w-8 rounded-full object-cover"
+                  height={8}
+                  width={8}
+                  alt=""
+                />
+              )}
               <div className="mb-[1px]">
                 <h3 className="text-sm text-white font-bold">@{username}</h3>
                 <p className="text-[10px] ">for more content like this</p>

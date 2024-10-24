@@ -15,7 +15,7 @@ const loadFromStorage = () => {
   if (typeof window !== "undefined") {
     const storedName = localStorage.getItem("name") || "";
     const storedUsername = localStorage.getItem("username") || "";
-    const storedProfilePic = localStorage.getItem("profilePic");
+    const storedProfilePic = localStorage.getItem("profilePic") || "";
     return {
       name: storedName,
       username: storedUsername,

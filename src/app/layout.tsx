@@ -7,7 +7,6 @@ import "./globals.css";
 const fontPoppins = Poppins({
   subsets: ["latin"],
   weight: ["100", "400", "600"],
-  variable: "--font-poppins",
 });
 
 export const metadata: Metadata = {
