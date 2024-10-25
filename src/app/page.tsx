@@ -145,12 +145,12 @@ export default function Home() {
           <ol className="list-disc list-inside">
             <li>Select a design theme from the options on the right side.</li>
             <li>
-              If the text is too long or doesn't fit properly, you can resize
-              the font by hovering over the text.
+              If the text is too long or doesn&apos;t fit properly, you can
+              resize the font by hovering over the text.
             </li>
             <li>
-              Once you're happy with the design, click &quot;Download Post&quot;
-              to save the post.
+              Once you&apos;re happy with the design, click &quot;Download
+              Post&quot; to save the post.
             </li>
             <li>Upload the document post to LinkedIn.</li>
             <li>
