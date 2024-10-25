@@ -36,6 +36,7 @@ const Sidebar = (props: Props) => {
 
   function handleTopicInput(e: any) {
     setTopic(e.target.value);
+    console.log();
   }
 
   const fetchStory = async () => {
@@ -102,10 +103,14 @@ const Sidebar = (props: Props) => {
         <Input
           disabled={isGenerating}
           type="text"
+          value={topic}
           placeholder="Enter you topic..."
           onChange={handleTopicInput}
         />
-        <Button onClick={fetchStory} disabled={isGenerating}>
+        <Button
+          onClick={fetchStory}
+          disabled={isGenerating || topic.length === 0}
+        >
           <Sparkles strokeWidth={1} className="mr-1" height={17} width={17} />
           {isGenerating ? "Generating..." : "Generate"}{" "}
         </Button>

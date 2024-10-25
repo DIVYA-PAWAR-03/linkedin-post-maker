@@ -99,8 +99,8 @@ export default function Home() {
               loading).
             </li>
             <li>
-              Click "Save" to complete your profile setup. You only need to do
-              this once.
+              Click &quot;Save&quot; to complete your profile setup. You only
+              need to do this once.
             </li>
           </ol>
         </div>
@@ -114,10 +114,10 @@ export default function Home() {
                 Use an AI tool to generate a LinkedIn post from this JSON.
               </li>
               <li>
-                Once the post is generated, go to "Create New Post" and paste
-                the JSON text into the text field.
+                Once the post is generated, go to &quot;Create New Post&quot;
+                and paste the JSON text into the text field.
               </li>
-              <li>Click "Create Post" to publish your content.</li>
+              <li>Click &quot;Create Post&quot; to publish your content.</li>
             </ol>
           </div>
 
@@ -126,11 +126,15 @@ export default function Home() {
               Automatic AI Post Generation:
             </h1>
             <ol className="list-disc list-outside ml-5 mb-3">
-              <li>Click "Create Post".</li>
+              <li>Click &quot;Create Post&quot;.</li>
               <li>Enter your topic or idea in the input field.</li>
-              <li>Click "Generate" and let the AI create the post for you.</li>
               <li>
-                Review the generated post and click "Create Post" to publish it.
+                Click &quot;Generate&quot; and let the AI create the post for
+                you.
+              </li>
+              <li>
+                Review the generated post and click &quot;Create Post&quot; to
+                publish it.
               </li>
             </ol>
           </div>
@@ -145,13 +149,13 @@ export default function Home() {
               the font by hovering over the text.
             </li>
             <li>
-              Once you're happy with the design, click "Download Post" to save
-              the post.
+              Once you're happy with the design, click &quot;Download Post&quot;
+              to save the post.
             </li>
             <li>Upload the document post to LinkedIn.</li>
             <li>
-              Click the "Copy Description" button to copy the text description,
-              then paste it into your LinkedIn post and publish.
+              Click the &quot;Copy Description&quot; button to copy the text
+              description, then paste it into your LinkedIn post and publish.
             </li>
           </ol>
         </div>

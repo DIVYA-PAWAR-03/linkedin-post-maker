@@ -2,6 +2,7 @@
 import AllPostThemes from "@/lib/all-post-themes";
 import { useSelectedTheme } from "@/lib/useSelectedTheme";
 import { Check } from "lucide-react";
+import Image from "next/image";
 import { useEffect, useState } from "react";
 
 const ThemesSection = () => {
@@ -27,7 +28,13 @@ const ThemesSection = () => {
           key={_}
           className="relative rounded-lg hover:border-primary transition-all overflow-hidden border-2 border-border"
         >
-          <img src={theme.demoUrl} alt="" />
+          <Image
+            src={theme.demoUrl}
+            alt=""
+            width={200}
+            height={200}
+            className="h-full w-full"
+          />
           <div className="absolute text-xs bottom-0 left-0 text-center w-full bg-background/70 p-3">
             {theme.title}
           </div>

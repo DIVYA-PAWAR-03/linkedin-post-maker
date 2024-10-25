@@ -25,7 +25,7 @@ const OutputPost = (props: Props) => {
 
   return (
     <main className="print:py-0 py-10">
-      <div className="hideOnPrint flex gap-2 fixed top-5 left-[50%] translate-x-[-50%] z-10">
+      <div className="hideOnPrint flex gap-2 fixed bottom-7 right-7 z-10">
         {/* <Select
           defaultValue="black-diamond"
           onValueChange={(e) => {
