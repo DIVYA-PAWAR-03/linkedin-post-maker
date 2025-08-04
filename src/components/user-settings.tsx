@@ -1,3 +1,5 @@
+"use client";
+
 import React, { useState, useEffect } from "react";
 import {
   Dialog,
@@ -47,8 +49,8 @@ const UserSettings = (props: Props) => {
     setProfilePic(tempProfilePic);
 
     // Save name, username, and profilePic to localStorage
-    localStorage.setItem("name", tempName);
-    localStorage.setItem("username", tempUsername);
+    localStorage.setItem("name", tempName as string);
+    localStorage.setItem("username", tempUsername as string);
     if (tempProfilePic) {
       localStorage.setItem("profilePic", tempProfilePic);
     }
@@ -74,8 +76,8 @@ const UserSettings = (props: Props) => {
   return (
     <Dialog>
       <DialogTrigger asChild>
-        <Button variant={"outline"} size={"icon"} className="">
-          <UserCog className="h-5 w-5" />
+        <Button variant={"outline"} className="">
+          <UserCog className="h-5 w-5" /> Update Profile
         </Button>
       </DialogTrigger>
       <DialogContent className="sm:max-w-[725px]">
@@ -94,7 +96,7 @@ const UserSettings = (props: Props) => {
               </Label>
               <Input
                 id="name"
-                value={tempName}
+                value={tempName as string}
                 onChange={(e) => setTempName(e.target.value)}
                 className="col-span-3"
               />
@@ -105,7 +107,7 @@ const UserSettings = (props: Props) => {
               </Label>
               <Input
                 id="username"
-                value={tempUsername}
+                value={tempUsername as string}
                 onChange={(e) => setTempUsername(e.target.value)}
                 className="col-span-3"
               />
@@ -122,12 +124,25 @@ const UserSettings = (props: Props) => {
                 className="col-span-3"
               />
             </div>
+
+            <div className="grid grid-cols-4 items-center gap-4">
+              <Label htmlFor="profilePicPreview" className="text-right">
+                Preview
+              </Label>
+              <Avatar className="col-span-3">
+                <AvatarImage src={profilePic || ""} alt="Profile Picture" />
+                <AvatarFallback>?</AvatarFallback>
+              </Avatar>
+            </div>
+
             <DialogDescription>
               Use low size image for lower size posts.
             </DialogDescription>
           </div>
           <DialogFooter>
-            <Button type="submit">Save changes</Button>
+            <DialogClose asChild>
+              <Button type="submit">Save changes</Button>
+            </DialogClose>
           </DialogFooter>
         </form>
       </DialogContent>

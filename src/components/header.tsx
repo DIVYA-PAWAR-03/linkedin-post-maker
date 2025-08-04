@@ -8,18 +8,10 @@ const Header = () => {
   return (
     <div className="flex justify-between items-center p-5">
       <div className="flex items-center gap-2">
-        <h1 className="font-bold">Linkedin Post Maker</h1>{" "}
-        <div>
-          <UserSettings />
-        </div>
+        <h1 className="font-bold">Linkedin Post Maker</h1> <div></div>
       </div>
       <div className="flex justify-center items-center gap-5">
-        <Link href={"/explore"}>
-          <Button variant="outline">Explore Posts</Button>
-        </Link>
-        <Link href={"/post-editor"}>
-          <Button>Create New Post</Button>
-        </Link>
+        <UserSettings />
         <ModeToggle />
       </div>
     </div>

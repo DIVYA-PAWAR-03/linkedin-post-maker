@@ -6,11 +6,15 @@ import { ChevronDown } from "lucide-react";
 import { useTheme } from "next-themes";
 import Link from "next/link";
 import { useState } from "react";
-import SyntaxHighlighter from "react-syntax-highlighter";
+import dynamic from "next/dynamic";
 import {
   anOldHope,
   atomOneLight,
 } from "react-syntax-highlighter/dist/esm/styles/hljs";
+
+const SyntaxHighlighter = dynamic(() => import("react-syntax-highlighter"), {
+  ssr: false,
+});
 
 export default function Home() {
   const [expanded, setExpanded] = useState(false);

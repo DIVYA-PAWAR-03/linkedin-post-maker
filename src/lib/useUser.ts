@@ -1,39 +1,55 @@
 import { create } from "zustand";
+import { persist } from "zustand/middleware";
 
 // Define the store's state and actions
 interface UserState {
-  name: string;
-  username: string;
+  name: string | null;
+  username: string | null;
   profilePic: string | null;
-  setName: (name: string) => void;
-  setUsername: (username: string) => void;
+  setName: (name: string | null) => void;
+  setUsername: (username: string | null) => void;
   setProfilePic: (profilePic: string | null) => void;
+  hasHydrated: boolean;
+  setHasHydrated: (state: boolean) => void;
 }
 
-// Function to load data from localStorage
-const loadFromStorage = () => {
-  if (typeof window !== "undefined") {
-    const storedName = localStorage.getItem("name") || "";
-    const storedUsername = localStorage.getItem("username") || "";
-    const storedProfilePic = localStorage.getItem("profilePic") || "";
-    return {
-      name: storedName,
-      username: storedUsername,
-      profilePic: storedProfilePic,
-    };
-  } else {
-    return {
+// Create the Zustand store with persist middleware
+export const useUser = create<UserState>()(
+  persist(
+    (set) => ({
       name: "",
       username: "",
-      profilePic: null,
-    };
-  }
-};
-
-// Create the Zustand store
-export const useUser = create<UserState>((set) => ({
-  ...loadFromStorage(),
-  setName: (name) => set({ name }),
-  setUsername: (username) => set({ username }),
-  setProfilePic: (profilePic) => set({ profilePic }),
-}));
+      profilePic: "",
+      hasHydrated: false,
+      setName: (name) => {
+        set({ name });
+        if (typeof window !== "undefined") {
+          localStorage.setItem("name", name || "");
+        }
+      },
+      setUsername: (username) => {
+        set({ username });
+        if (typeof window !== "undefined") {
+          localStorage.setItem("username", username || "");
+        }
+      },
+      setProfilePic: (profilePic) => {
+        set({ profilePic });
+        if (typeof window !== "undefined") {
+          localStorage.setItem("profilePic", profilePic || "");
+        }
+      },
+      setHasHydrated: (state) => {
+        set({
+          hasHydrated: state,
+        });
+      },
+    }),
+    {
+      name: "user-storage",
+      onRehydrateStorage: () => (state) => {
+        state?.setHasHydrated(true);
+      },
+    }
+  )
+);

@@ -9,7 +9,6 @@ import UserDescription from "./user-description";
 import { ModeToggle } from "./ui/mode-toggle";
 import UserSettings from "./user-settings";
 import { Input } from "./ui/input";
-import { GoogleGenerativeAI } from "@google/generative-ai";
 
 type Props = {};
 
@@ -43,43 +42,37 @@ const Sidebar = (props: Props) => {
     try {
       setIsGenerating(true);
       setJsonInput("");
-      // Initialize the Google Generative AI client
-      const genAI = new GoogleGenerativeAI(
-        process.env.NEXT_PUBLIC_AI_API_KEY as string
-      );
-      const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
 
-      const prompt = `
-  Please generate a LinkedIn post in the following structured object format:
+      const response = await fetch("/api/get-post-object", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ topic }),
+      });
 
-  {
-    "title": "string",
-    "description": "string",
-    "hashtags": ["string"],
-    "content": [
-      {
-        "name": "string",
-        "description": "string",
-        "codeLang": "string",
-        "code": "string"
+      if (!response.ok) {
+        throw new Error("Failed to generate content");
       }
-    ]
-  }
 
-  Make sure to follow this format strictly and return **only** a valid JSON object with no additional text, no line breaks outside of string values, and no trailing commas. If a field is not applicable, use an empty string for "title", "description", or "code", and an empty array for "hashtags" or "content". Ensure proper JSON syntax throughout.
+      // Handle streaming response
+      const reader = response.body?.getReader();
+      const decoder = new TextDecoder();
 
-  The topic of the LinkedIn post is: ${topic}.
-`;
+      if (reader) {
+        while (true) {
+          const { done, value } = await reader.read();
+          if (done) break;
 
-      const result = await model.generateContentStream(prompt);
-
-      // Stream the result and update the state as chunks arrive
-      for await (const chunk of result.stream) {
-        setJsonInput((prevStory) => prevStory + chunk.text());
+          const chunk = decoder.decode(value, { stream: true });
+          setJsonInput((prevStory) => prevStory + chunk);
+        }
       }
+
       setIsGenerating(false);
     } catch (error) {
       console.error("Error fetching the story:", error);
+      setIsGenerating(false);
     }
   };
 

@@ -20,13 +20,14 @@ const ThemesSection = () => {
 
   return (
     <aside className="flex flex-col gap-4 p-4">
+      <h2 className="text-lg font-semibold">Themes</h2>
       {AllPostThemes.map((theme, _) => (
         <div
           onClick={() => {
             setSelectedTheme(theme.name);
           }}
           key={_}
-          className="relative rounded-lg hover:border-primary transition-all overflow-hidden border-2 border-border"
+          className="relative rounded-lg hover:border-primary cursor-pointer transition-all overflow-hidden border-2 border-border"
         >
           <Image
             src={theme.demoUrl}

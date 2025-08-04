@@ -1,7 +1,11 @@
 "use client";
 import React, { ReactNode, useEffect, useState } from "react";
-import SyntaxHighlighter from "react-syntax-highlighter";
+import dynamic from "next/dynamic";
 import { Input } from "./ui/input";
+
+const SyntaxHighlighter = dynamic(() => import("react-syntax-highlighter"), {
+  ssr: false,
+});
 
 const ModificableCodeBlock = ({
   children,

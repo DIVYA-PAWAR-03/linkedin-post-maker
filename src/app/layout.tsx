@@ -3,6 +3,8 @@ import { Inter as FontSans, Poppins } from "next/font/google";
 import { ThemeProvider } from "@/lib/theme-provider";
 import { cn } from "@/lib/utils";
 import "./globals.css";
+import NoProfileError from "@/components/no-profile-error";
+import Providers from "./providers";
 
 const fontPoppins = Poppins({
   subsets: ["latin"],
@@ -27,9 +29,7 @@ export default function RootLayout({
           fontPoppins.className
         )}
       >
-        <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
-          {children}
-        </ThemeProvider>
+        <Providers>{children}</Providers>
       </body>
     </html>
   );
