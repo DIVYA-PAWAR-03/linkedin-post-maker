@@ -23,10 +23,10 @@ const MidnightSkyPost = (props: Props) => {
             key={index}
             className="relative text-white shadow-lg p-10 px-12 overflow-hidden printSection"
             style={{
-              backgroundImage: "url(/backgrounds/midnight-sky.png)", // Your background image
+              backgroundImage: "url(/backgrounds/midnight-sky.png)", 
               backgroundSize: "cover",
               backgroundPosition: "center",
-              backgroundColor: "#0b0c1d", // fallback dark color
+              backgroundColor: "#0b0c1d", 
             }}
           >
             <h1 className="text-3xl font-semibold z-10 text-[#b39ddb]">
@@ -64,7 +64,7 @@ const MidnightSkyPost = (props: Props) => {
               )}
               <div className="mb-[1px]">
                 <h3 className="text-sm text-white font-bold">@{username}</h3>
-                <p className="text-[10px]">inspired by the midnight sky</p>
+                <p className="text-[10px]">for more content like this</p>
               </div>
             </div>
           </section>
