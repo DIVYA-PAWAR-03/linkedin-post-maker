@@ -21,10 +21,10 @@ const CornerstonePost: React.FC = () => {
             key={index}
             className="relative text-white shadow-lg p-10 px-12 overflow-hidden printSection"
             style={{
-              backgroundImage: "url(/backgrounds/Cornerstone.jpg)", // your cornerstone image path
+              backgroundImage: "url(/backgrounds/Cornerstone.jpg)", 
               backgroundSize: "cover",
               backgroundPosition: "center",
-              backgroundColor: "#1f2024", // dark charcoal tone
+              backgroundColor: "#1f2024", 
             }}
           >
             <h1 className="text-3xl font-semibold z-10 text-gray-200">
