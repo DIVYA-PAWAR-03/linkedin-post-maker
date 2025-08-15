@@ -31,7 +31,7 @@ const OutputPost = (props: Props) => {
         >
           <FileDownIcon className="w-5 h-5 mr-1" /> Download as PDF
         </Button>
-        
+
         <LinkedInPostDialog />
       </div>
       {AllPostThemes.map((theme, _) => (

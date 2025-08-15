@@ -1,5 +1,7 @@
 import NextAuth, { NextAuthOptions } from "next-auth";
-import LinkedInProvider, { LinkedInProfile } from "next-auth/providers/linkedin";
+import LinkedInProvider, {
+  LinkedInProfile,
+} from "next-auth/providers/linkedin";
 
 export const authOptions: NextAuthOptions = {
   providers: [
@@ -14,10 +16,11 @@ export const authOptions: NextAuthOptions = {
         email: profile.email,
         image: profile.picture,
       }),
-      wellKnown: "https://www.linkedin.com/oauth/.well-known/openid-configuration",
+      wellKnown:
+        "https://www.linkedin.com/oauth/.well-known/openid-configuration",
       authorization: {
         params: {
-          scope: 'openid profile email w_member_social',
+          scope: "openid profile email w_member_social",
         },
       },
     }),
