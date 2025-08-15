@@ -13,7 +13,7 @@ const Header = () => {
       </div>
       <div className="flex justify-center items-center gap-5">
         <LinkedInProfile />
-        <UserSettings />
+        {/* <UserSettings /> */}
         <ModeToggle />
       </div>
     </div>

@@ -235,7 +235,7 @@ function generatePostDescription(postData: PostData): string {
     postText += hashtags.map((tag) => `#${tag.replace(/^#/, "")}`).join(" ");
   }
 
-  postText += `\n\n🔗 Created with LinkedIn Post Maker`;
+  postText += `\n\n🔗 Created with https://linkedin-post-maker.vercel.app/`;
 
   // LinkedIn has a 3000 character limit
   return postText.length > 3000

@@ -78,7 +78,7 @@ export default function LinkedInPostDialog({
       postText += hashtags.map((tag) => `#${tag.replace(/^#/, "")}`).join(" ");
     }
 
-    postText += `\n\n🔗 Created with LinkedIn Post Maker`;
+    postText += `\n\n🔗 Created with https://linkedin-post-maker.vercel.app/`;
 
     return postText.length > 3000
       ? postText.substring(0, 2950) + "..."

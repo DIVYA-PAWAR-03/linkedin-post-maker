@@ -32,7 +32,7 @@ const Providers = ({ children }: Props) => {
   return (
     <SessionProvider>
       <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
-        {(!name || !username || !profilePic) && <NoProfileError />}
+        {/* {(!name || !username || !profilePic) && <NoProfileError />} */}
         {children}
       </ThemeProvider>
     </SessionProvider>
