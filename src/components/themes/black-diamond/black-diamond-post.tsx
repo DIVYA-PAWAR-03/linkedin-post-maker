@@ -58,8 +58,8 @@ const BlackDiamondPost = (props: Props) => {
                 <Image
                   src={profilePic as string}
                   className="h-8 w-8 rounded-full object-cover"
-                  height={8}
-                  width={8}
+                  height={512}
+                  width={512}
                   alt=""
                 />
               )}

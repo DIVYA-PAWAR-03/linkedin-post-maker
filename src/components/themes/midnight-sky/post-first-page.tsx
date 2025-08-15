@@ -10,8 +10,6 @@ const PostFirstPage = ({ title }: { title: string }) => {
   const { user: sessionUser, isAuthenticated } = useLinkedInAuth();
   const [isMounted, setIsMounted] = useState(false);
 
-  console.log(profilePic);
-
   useEffect(() => {
     setIsMounted(true);
   }, []);

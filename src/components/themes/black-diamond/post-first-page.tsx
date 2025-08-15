@@ -37,8 +37,8 @@ const PostFirstPage = ({ title }: { title: string }) => {
               <Image
                 src={displayProfilePic as string}
                 className="h-16 w-16 rounded-full object-cover"
-                height={16}
-                width={16}
+                height={512}
+                width={512}
                 alt=""
               />
             )}
