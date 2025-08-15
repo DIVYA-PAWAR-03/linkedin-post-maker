@@ -3,6 +3,9 @@ import { getServerSession } from "next-auth";
 import { PostData } from "@/lib/types";
 import { authOptions } from "@/lib/auth";
 
+// Force dynamic rendering since we're using session data
+export const dynamic = "force-dynamic";
+
 export async function POST(request: NextRequest) {
   try {
     // Get the session to ensure user is authenticated
