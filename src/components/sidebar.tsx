@@ -58,6 +58,7 @@ const Sidebar = (props: Props) => {
       // Handle streaming response
       const reader = response.body?.getReader();
       const decoder = new TextDecoder();
+      let fullContent = "";
 
       if (reader) {
         while (true) {
@@ -65,14 +66,26 @@ const Sidebar = (props: Props) => {
           if (done) break;
 
           const chunk = decoder.decode(value, { stream: true });
+          fullContent += chunk;
           setJsonInput((prevStory) => prevStory + chunk);
         }
       }
 
       setIsGenerating(false);
+
+      // Auto-create post after generation completes
+      try {
+        const parsedInput = JSON.parse(fullContent);
+        setContentObject(parsedInput);
+        document.title = parsedInput.title;
+      } catch (e) {
+        console.error("Generated content is not valid JSON:", e);
+        alert("Generated content needs manual review. Please check the JSON format.");
+      }
     } catch (error) {
       console.error("Error fetching the story:", error);
       setIsGenerating(false);
+      alert("Failed to generate content. Please try again.");
     }
   };
 
@@ -110,7 +123,7 @@ const Sidebar = (props: Props) => {
           disabled={isGenerating || topic.length === 0}
         >
           <Sparkles strokeWidth={1} className="mr-1" height={17} width={17} />
-          {isGenerating ? "Generating..." : "Generate"}{" "}
+          {isGenerating ? "Generating..." : "Generate Post"}{" "}
         </Button>
       </div>
       <Textarea
