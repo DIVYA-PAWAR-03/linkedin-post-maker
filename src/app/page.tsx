@@ -211,23 +211,15 @@ export default function Home() {
           )}
         </div>
       </div>
-      <div className="p-10 text-center">
-  Made with 💖 by{" "}
-  <a
-    href="https://github.com/Chetan-KK"
-    className="hover:underline underline-offset-4 font-bold"
-  >
-    C
-  </a>
-  {" & "}
-  <a
-    href="https://github.com/DIVYA-PAWAR-03/DIVYA-PAWAR-03"
-    className="hover:underline underline-offset-4 font-bold"
-  >
-    D
-  </a>
-</div>
-
+      <div className="p-10  text-center">
+        Made with 💖 by{" "}
+        <a
+          href="https://github.com/Chetan-KK"
+          className="hover:underline underline-offset-4 font-bold"
+        >
+          Chetan-KK
+        </a>
+      </div>
     </main>
   );
 }
