@@ -2,8 +2,6 @@
 
 import { Button } from "./ui/button";
 import { FileDownIcon } from "lucide-react";
-import BlackDiamondPost from "./themes/black-diamond/black-diamond-post";
-import ColourfulBubblesPost from "./themes/colourful-bubbles/colourful-bubbles-post";
 import { useSelectedTheme } from "@/lib/useSelectedTheme";
 import AllPostThemes from "@/lib/all-post-themes";
 import { useEffect, useState } from "react";
