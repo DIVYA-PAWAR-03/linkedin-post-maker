@@ -6,14 +6,14 @@ import { ChevronDown } from "lucide-react";
 import { useTheme } from "next-themes";
 import Link from "next/link";
 import { useState } from "react";
-import { Prism as SyntaxHighlighterComponent } from "react-syntax-highlighter";
+// Use regular import to avoid dynamic import type issues
+// @ts-ignore - Ignore type conflicts with react-syntax-highlighter
+import SyntaxHighlighter from "react-syntax-highlighter";
+// @ts-ignore - Ignore type conflicts with styles
 import {
   oneDark,
   oneLight,
 } from "react-syntax-highlighter/dist/esm/styles/prism";
-
-// Type assertion to fix React version conflict
-const SyntaxHighlighter = SyntaxHighlighterComponent as any;
 
 export default function Home() {
   const [expanded, setExpanded] = useState(false);
@@ -173,6 +173,7 @@ export default function Home() {
       >
         <h1 className="text-2xl font-bold mb-3">Example Object:</h1>
         <div>
+          {/* @ts-ignore - Type assertion to bypass React type conflicts */}
           <SyntaxHighlighter
             language={"json"}
             style={resolvedTheme === "dark" ? oneDark : oneLight}
@@ -211,22 +212,21 @@ export default function Home() {
         </div>
       </div>
       <div className="p-10 text-center">
-  Made with 💖 by{" "}
-  <a
-    href="https://github.com/Chetan-KK"
-    className="hover:underline underline-offset-4 font-bold"
-  >
-    C
-  </a>
-  {" & "}
-  <a
-    href="https://github.com/DIVYA-PAWAR-03/DIVYA-PAWAR-03"
-    className="hover:underline underline-offset-4 font-bold"
-  >
-    D
-  </a>
-</div>
-
+        Made with 💖 by{" "}
+        <a
+          href="https://github.com/Chetan-KK"
+          className="hover:underline underline-offset-4 font-bold"
+        >
+          C
+        </a>
+        {" & "}
+        <a
+          href="https://github.com/DIVYA-PAWAR-03/DIVYA-PAWAR-03"
+          className="hover:underline underline-offset-4 font-bold"
+        >
+          D
+        </a>
+      </div>
     </main>
   );
 }
