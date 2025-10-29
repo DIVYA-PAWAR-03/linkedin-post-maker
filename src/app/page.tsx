@@ -6,15 +6,14 @@ import { ChevronDown } from "lucide-react";
 import { useTheme } from "next-themes";
 import Link from "next/link";
 import { useState } from "react";
-import dynamic from "next/dynamic";
+import { Prism as SyntaxHighlighterComponent } from "react-syntax-highlighter";
 import {
-  anOldHope,
-  atomOneLight,
-} from "react-syntax-highlighter/dist/esm/styles/hljs";
+  oneDark,
+  oneLight,
+} from "react-syntax-highlighter/dist/esm/styles/prism";
 
-const SyntaxHighlighter = dynamic(() => import("react-syntax-highlighter"), {
-  ssr: false,
-});
+// Type assertion to fix React version conflict
+const SyntaxHighlighter = SyntaxHighlighterComponent as any;
 
 export default function Home() {
   const [expanded, setExpanded] = useState(false);
@@ -176,7 +175,7 @@ export default function Home() {
         <div>
           <SyntaxHighlighter
             language={"json"}
-            style={resolvedTheme === "dark" ? anOldHope : atomOneLight}
+            style={resolvedTheme === "dark" ? oneDark : oneLight}
             showLineNumbers
             customStyle={{
               backgroundColor:
