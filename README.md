@@ -1,5 +1,26 @@
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
+## Features
+
+- 🎨 **Multiple Post Themes** - Choose from 6 professionally designed themes:
+  - Black Coal
+  - Black Diamond
+  - Colourful Bubbles
+  - Cornerstone
+  - Gray Whisper
+  - Midnight Sky
+
+- ✏️ **Post Editor** - Create and customize LinkedIn posts with an intuitive editor
+- 👤 **User Profiles** - Manage user information and settings
+- 🖼️ **Visual Post Generation** - Generate visually appealing LinkedIn post images
+- 📝 **Modifiable Content** - Edit text and code blocks directly in the post
+- 🌓 **Dark/Light Mode** - Toggle between dark and light themes for comfortable viewing
+- 📱 **Responsive Design** - Works seamlessly across different screen sizes
+- 🔍 **Explore Page** - Browse and discover post templates
+- 🎯 **Custom Backgrounds** - Apply custom backgrounds to your posts
+- ⚙️ **User Settings** - Personalize your experience with configurable settings
+- 🚀 **Real-time Preview** - See changes to your post in real-time
+
 ## Getting Started
 
 First, run the development server:
