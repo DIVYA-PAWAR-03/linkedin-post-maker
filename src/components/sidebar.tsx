@@ -51,7 +51,7 @@ const Sidebar = (props: Props) => {
 
       <Textarea
         disabled={isGenerating}
-        className="p-2 min-h-32"
+        className="p-2 min-h-64"
         value={jsonData}
         onChange={handleInputChange}
         placeholder={`Input Json Data`}
